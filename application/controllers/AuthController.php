@@ -24,6 +24,7 @@ class AuthController extends CI_Controller
 
 		$cek  = $this->db->query("SELECT * FROM tb_user WHERE username ='$user' AND password ='$password' LIMIT 1")->row_array();
 		$session = array(
+			'id' => $cek['id'],
 			'username' => $cek['username'],
 			'role' => $cek['role'],
 			'isLoged' => TRUE

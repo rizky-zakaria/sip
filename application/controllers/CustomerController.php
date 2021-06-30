@@ -15,7 +15,7 @@ class CustomerController extends CI_Controller
 	{
 		$cek = $this->input->post('cek');
 		if ($cek != null) {
-			$data['data'] = $this->db->query("SELECT * FROM tb_arsip WHERE nomor_imb = '$cek' OR nama_pemilik = '$cek'")->result_array();
+			$data['data'] = $this->db->query("SELECT * FROM tb_arsip WHERE nomor_arsip = '$cek' OR nama_pemilik = '$cek'")->result_array();
 			// var_dump($data);
 			// die;
 			$this->load->view('customer/index', $data);
@@ -38,5 +38,17 @@ class CustomerController extends CI_Controller
 		$this->session->unset_userdata('role');
 		$this->session->unset_userdata('isLoged');
 		redirect(base_url());
+	}
+
+	public function pinjam($id)
+	{
+		$getId = $id;
+		$insert = array(
+			'id_arsip' => $getId,
+			'id_peminjam' => $this->session->userdata('id'),
+			'status' => "diajukan"
+		);
+		$this->db->insert('tb_pinjam', $insert);
+		redirect(base_url("CustomerController"));
 	}
 }

@@ -120,9 +120,12 @@
 											<tbody>
 												<tr>
 													<th scope="row"><?= $no++; ?></th>
-													<td><?= $dt['nomor_imb']; ?></td>
+													<td><?= $dt['nomor_arsip']; ?></td>
 													<td><?= $dt['nama_pemilik']; ?></td>
-													<td><a href="<?= base_url("CustomerController/preview/") . $dt['arsip']; ?>">Preview Now </td>
+													<td>
+														<!-- <a href="<?= base_url("CustomerController/preview/") . $dt['arsip']; ?>"> -->
+														<a href="<?= base_url("CustomerController/pinjam/" . $dt['id']); ?>" class="btn btn-primary">Ajukan Peminjaman</a>
+													</td>
 												</tr>
 											</tbody>
 										<?php
