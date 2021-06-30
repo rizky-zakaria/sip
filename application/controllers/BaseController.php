@@ -6,6 +6,8 @@ class BaseController extends CI_Controller
 		parent::__construct();
 		if ($this->session->userdata('isLoged') != TRUE) {
 			redirect(base_url("AuthController"));
+		} elseif ($this->session->userdata('role') == 3) {
+			redirect(base_url("CustomerController"));
 		}
 	}
 
@@ -64,8 +66,10 @@ class BaseController extends CI_Controller
 	{
 		$post = $this->input->post();
 		$this->nama_pemilik = $post['nama'];
-		$this->nomor_imb = $this->uuid->v4();
+		$this->nomor_arsip = $this->uuid->v4();
 		$this->arsip = $this->_uploadImage();
+		$this->jenis_arsip = $post['jenis'];
+		$this->keterangan = $post['keterangan'];
 		$this->db->insert('tb_arsip', $this);
 		redirect(base_url("BaseController"));
 	}
@@ -96,5 +100,22 @@ class BaseController extends CI_Controller
 		$this->session->unset_userdata('role');
 		$this->session->unset_userdata('isLoged');
 		redirect(base_url());
+	}
+
+	public function permohonan()
+	{
+		$data['title'] = 'Base Data';
+		$data['judul'] = 'Dashboard Page';
+		$data['arsip'] = $this->db->query("SELECT tb_pinjam.id_peminjaman, tb_pinjam.status, tb_biodata.nama, tb_arsip.nomor_arsip, tb_arsip.arsip FROM tb_pinjam JOIN tb_user JOIN tb_biodata JOIN tb_arsip ON tb_pinjam.id_peminjam = tb_user.id AND tb_pinjam.id_arsip = tb_arsip.id AND tb_user.id = tb_biodata.id_user ")->result_array();
+		$this->load->view('templates/header', $data);
+		$this->load->view('base/permohonan', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function ubahStatus($id)
+	{
+		$getId = $id;
+		$this->db->query("UPDATE `tb_pinjam` SET `status` = 'disetujui' WHERE `tb_pinjam`.`id_peminjaman` = '$getId'; ");
+		redirect(base_url("BaseController/permohonan"));
 	}
 }

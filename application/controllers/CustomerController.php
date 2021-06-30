@@ -4,6 +4,11 @@ class CustomerController extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		if ($this->session->userdata('isLoged') == FALSE) {
+			redirect(base_url("AuthController"));
+		} else if ($this->session->userdata('role') != 3) {
+			redirect(base_url("BaseController"));
+		}
 	}
 
 	public function index()
@@ -25,5 +30,13 @@ class CustomerController extends CI_Controller
 		// $this->load->view('templates/header');
 		$this->load->view('customer/preview', $data);
 		// $this->load->view('templates/footer');
+	}
+
+	public function logout()
+	{
+		$this->session->unset_userdata('username');
+		$this->session->unset_userdata('role');
+		$this->session->unset_userdata('isLoged');
+		redirect(base_url());
 	}
 }

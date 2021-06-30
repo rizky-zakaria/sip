@@ -13,6 +13,20 @@
 				</div>
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
+						<!-- <i class="input-group-text" id="basic-addon1"></i> -->
+						<i class="fas fa-user input-group-text"></i>
+					</div>
+					<input type="text" class="form-control" placeholder="Jenis Arsip" aria-label="Username" name="jenis" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<!-- <i class="input-group-text" id="basic-addon1"></i> -->
+						<i class="fas fa-user input-group-text"></i>
+					</div>
+					<input type="text" class="form-control" placeholder="Keterangan" aria-label="Username" name="keterangan" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
 						<i class="fas fa-file input-group-text"></i>
 					</div>
 					<div class="custom-file">

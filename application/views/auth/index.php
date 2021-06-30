@@ -74,7 +74,7 @@
 										<input type="submit" value="Masuk" class="btn btn-outline-primary btn-user btn-block">
 									</form>
 									<span style="margin-top: 10mm;">
-
+										<a href="<?= base_url("AuthController/register"); ?>" class="btn btn-outline-success mt-2" style="width: 100%;">Register</a>
 									</span>
 								</div>
 							</div>

@@ -28,11 +28,51 @@ class AuthController extends CI_Controller
 			'role' => $cek['role'],
 			'isLoged' => TRUE
 		);
-		if ($cek) {
+		if ($cek['role'] == 1) {
 			$this->session->set_userdata($session);
 			redirect(base_url("BaseController"));
+		} else if ($cek['role'] == 2) {
+			$this->session->set_userdata($session);
+			redirect(base_url("BaseController"));
+		} else if ($cek['role'] == 3) {
+			$this->session->set_userdata($session);
+			redirect(base_url("CustomerController"));
 		} else {
 			redirect(base_url("AuthController"));
 		}
+	}
+
+	public function register()
+	{
+		$this->load->view('auth/register');
+	}
+
+	public function act_register()
+	{
+		$post = $this->input->post();
+
+		$user = array(
+			'username' => $post['user'],
+			'password' => md5($post['password']),
+			'role' => 3
+		);
+		$this->db->insert('tb_user', $user);
+		$getId = $this->db->get_where('tb_user', array('username' => $post['user']))->row_array();
+		// var_dump($getId);
+		// die;
+		$insert = array(
+			'nama' => $post['nama'],
+			'tempta_lahir' => $post['tanggal_lahir'],
+			'tanggal_lahir' => $post['tempat_lahir'],
+			'alamat'  => $post['alamat'],
+			'jenis_kelamin' => $post['jenis_kelamin'],
+			'pekerjan' => $post['pekerjaan'],
+			'no_hp' => $post['no_hp'],
+			'email' => $post['email'],
+			'id_user' => $getId['id']
+		);
+		// var_dump($post);
+		$this->db->insert('tb_biodata', $insert);
+		redirect(base_url());
 	}
 }

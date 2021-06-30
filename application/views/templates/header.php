@@ -53,6 +53,9 @@
 				<li class="nav-item d-none d-sm-inline-block">
 					<a href="<?= base_url("BaseController/data"); ?>" class="nav-link">Data</a>
 				</li>
+				<li class="nav-item d-none d-sm-inline-block">
+					<a href="<?= base_url("BaseController/permohonan"); ?>" class="nav-link">Permohonan</a>
+				</li>
 			</ul>
 		</nav>
 		<!-- /.navbar -->

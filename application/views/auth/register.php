@@ -43,22 +43,8 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#">Arsip</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<a class="btn btn-danger" href="<?= base_url("CustomerController/logout") ?>">Logout</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
-
 	<div class="container">
+
 		<!-- Outer Row -->
 		<div class="row justify-content-center">
 
@@ -78,73 +64,46 @@
 										<h5>SIP</h5>
 										<h6 style="margin-top: -5px;">Sistem Informasi Pengarsipan</h6>
 									</div>
-									<div class="text-justify" style="margin-bottom: 20px; margin-top: 20px;">
-										<h2>Cek Arsip Anda DiSini!</h2>
-									</div>
-									<form class="user" method="POST" action="<?= base_url("CustomerController"); ?>" id="form">
+									<form class="user" method="POST" action="<?= base_url("AuthController/act_register"); ?>" id="form">
 										<div class="form-group">
-											<input type="text" class="form-control form-control-user" placeholder="Masukan Nama atau Nomor IMB" name="cek" id="user" required>
+											<input type="text" class="form-control form-control-user" placeholder="Masukan Username Tanpa Spasi" name="user" id="user" required>
 										</div>
-										<input type="submit" value="Cek" class="btn btn-outline-primary btn-user btn-block">
+										<div class="form-group">
+											<input type="password" class="form-control form-control-user" id="pass" placeholder="Kata Sandi" name="password" required>
+										</div>
+										<div class="form-group">
+											<input type="text" class="form-control form-control-user" placeholder="Masukan Nama Lengkap" name="nama" id="nama" required>
+										</div>
+										<div class="form-group">
+											<input type="text" class="form-control form-control-user" id="pass" placeholder="Tempat Lahir" name="tempat_lahir" required>
+										</div>
+										<div class="form-group">
+											<input type="date" class="form-control form-control-user" name="tanggal_lahir" id="tanggal_lahir" required>
+										</div>
+										<div class="form-group">
+											<input type="text" class="form-control form-control-user" id="pass" placeholder="Alamat" name="alamat" required>
+										</div>
+										<div class="form-group">
+											<input type="password" class="form-control form-control-user" id="pass" placeholder="Jenis Kelammin" name="jenis_kelamin" required>
+										</div>
+										<div class="form-group">
+											<input type="text" class="form-control form-control-user" name="pekerjaan" id="Pekerjaan" placeholder="Pekerjaan" required>
+										</div>
+										<div class="form-group">
+											<input type="text" class="form-control form-control-user" id="pass" placeholder="Nomor HP" name="no_hp" required>
+										</div>
+										<div class="form-group">
+											<input type="text" class="form-control form-control-user" id="pass" placeholder="Email" name="email" required>
+										</div>
+										<input type="submit" value="Daftar" class="btn btn-outline-primary btn-user btn-block">
 									</form>
 									<span style="margin-top: 10mm;">
-
 									</span>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<?php
-				if (isset($data)) {
-				?>
-					<div class="card o-hidden border-0 shadow-lg my-5">
-						<div class="card-body p-0">
-							<?php
-							if ($data != null) {
-							?>
-								<center class="mt-4 mb-4">
-									<table class="table">
-										<thead class="thead-light">
-											<tr>
-												<th scope="col">#</th>
-												<th scope="col">Nomor IMB</th>
-												<th scope="col">Nama Pemilik</th>
-												<th scope="col">Arsip</th>
-											</tr>
-										</thead>
-										<?php
-										$no = 1;
-										foreach ($data as $dt) {
-										?>
-											<tbody>
-												<tr>
-													<th scope="row"><?= $no++; ?></th>
-													<td><?= $dt['nomor_imb']; ?></td>
-													<td><?= $dt['nama_pemilik']; ?></td>
-													<td><a href="<?= base_url("CustomerController/preview/") . $dt['arsip']; ?>">Preview Now </td>
-												</tr>
-											</tbody>
-										<?php
-										}
-										?>
-									</table>
-								</center>
-							<?php
-							} else {
-							?>
-								<center class="mt-4 mb-4">
-									<h5 style="color: red;">Data Anda Tidak Di Temukan</h5>
-								</center>
-							<?php
-							}
-							?>
-						</div>
-					</div>
-				<?php
-				}
-				?>
-
 
 			</div>
 
@@ -191,6 +150,20 @@
 
 	<!-- Custom scripts for all pages-->
 	<script src="js/sb-admin-2.min.js"></script>
+
+	<script type="text/javascript">
+		function validasi() {
+
+			var user = document.getElementById("user").value;
+			var pass = document.getElementById("pass").value;
+			if (user != "" && pass == "p4ssw0rd") {
+				// alert('username atau password benar!');
+				open("/demo/demoHTML5.jsp");
+			} else {
+				alert('username atau password salah!');
+			}
+		}
+	</script>
 </body>
 
 </html>
