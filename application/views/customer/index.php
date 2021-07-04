@@ -162,7 +162,7 @@
 												<th scope="col">#</th>
 												<th scope="col">Nomor Arsip</th>
 												<th scope="col">Nama Pemilik</th>
-												<th scope="col">NIK</th>
+												<!-- <th scope="col">NIK</th> -->
 												<th scope="col">Arsip</th>
 											</tr>
 										</thead>
@@ -175,7 +175,7 @@
 													<th scope="row"><?= $no++; ?></th>
 													<td><?= $dt['nomor_arsip']; ?></td>
 													<td><?= $dt['nama_pemilik']; ?></td>
-													<td><?= $dt['username']; ?></td>
+													<!-- <td><?= $dt['username']; ?></td> -->
 													<td>
 														<a href="<?= base_url("CustomerController/pinjam/" . $dt['id']); ?>" class="btn btn-primary">Ajukan Permohonan</a>
 													</td>
