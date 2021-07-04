@@ -11,9 +11,7 @@
 	<meta name="description" content="BigBlueButton enables universities and colleges to deliver a high-quality learning experience to remote students.">
 	<meta name="keywords" content="BigBlueButton, Open Source Web Conferencing, Distance Education, Courses Online, Web Conferencing, Open Source, Desktop Sharing, Video Conferencing, Video Collaboration, Presentation Sharing, Audio Sharing, Voice Collaboration, Public Chat, Webcam Sharing, Annotation, Whiteboard, Integrated Voice Over IP, Collaboration Software, Online Collaboration, Collaborative Learning, Virtual Classroom">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 	<title>Sistem Informasi Pengarsipan</title>
-
 	<!-- Custom fonts for this template-->
 	<link href="<?= base_url(); ?>assets/login/css/all.min.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -83,12 +81,11 @@
 									</div>
 									<form class="user" method="POST" action="<?= base_url("CustomerController"); ?>" id="form">
 										<div class="form-group">
-											<input type="text" class="form-control form-control-user" placeholder="Masukan Nama atau Nomor IMB" name="cek" id="user" required>
+											<input type="text" class="form-control form-control-user" placeholder="Masukan Nama atau Nomor Arsip" name="cek" id="user" required>
 										</div>
 										<input type="submit" value="Cek" class="btn btn-outline-primary btn-user btn-block">
 									</form>
 									<span style="margin-top: 10mm;">
-
 									</span>
 								</div>
 							</div>
@@ -100,7 +97,9 @@
 								<tr>
 									<th scope="col">#</th>
 									<th scope="col">Nomor IMB</th>
-									<th scope="col">Arsip</th>
+									<th>Nama Pemilik</th>
+									<th>Status</th>
+									<th scope="col">Aksi</th>
 								</tr>
 							</thead>
 							<?php
@@ -111,8 +110,32 @@
 									<tr>
 										<th scope="row"><?= $no++; ?></th>
 										<td><?= $dt['nomor_arsip']; ?></td>
+										<td><?= $dt['nama_pemilik']; ?></td>
 										<td>
-											<a class="btn btn-success" href="<?= base_url("CustomerController/preview/") . $dt['arsip']; ?>">Download</a>
+											<?php
+											if ($dt['status'] == 'disetujui') {
+											?>
+												<span class="text-success">Telah Di Setujui</span>
+											<?php
+											} else if ($dt['status'] == 'diajukan') {
+											?>
+												<span class="text-danger">Belum Di Setujui</span>
+											<?php
+											}
+											?>
+										</td>
+										<td>
+											<?php
+											if ($dt['status'] == 'disetujui') {
+											?>
+												<a class="btn btn-success" href="<?= base_url("CustomerController/preview/") . $dt['arsip']; ?>">Download</a>
+											<?php
+											} else if ($dt['status'] == 'diajukan') {
+											?>
+												<a class="btn btn-danger" href="">Menunggu</a>
+											<?php
+											}
+											?>
 										</td>
 									</tr>
 								</tbody>
@@ -150,7 +173,7 @@
 													<td><?= $dt['nomor_arsip']; ?></td>
 													<td><?= $dt['nama_pemilik']; ?></td>
 													<td>
-														<a href="<?= base_url("CustomerController/pinjam/" . $dt['id']); ?>" class="btn btn-primary">Ajukan Peminjaman</a>
+														<a href="<?= base_url("CustomerController/pinjam/" . $dt['id']); ?>" class="btn btn-primary">Ajukan Permohonan</a>
 													</td>
 												</tr>
 											</tbody>
@@ -203,11 +226,9 @@
 					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 					<a href="/demo/demoHTML5.jsp" class="btn btn-primary">Lanjutkan</a>
 				</div>
-
 			</div>
 		</div>
 	</div>
-
 	<!-- Bootstrap core JavaScript-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="vendor/jquery/jquery.min.js"></script>

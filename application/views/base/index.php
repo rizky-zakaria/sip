@@ -1,10 +1,10 @@
 	<div class="card" style="width: fit-content;">
 		<div class="card-header bg-secondary">
-			<h2>Daftar Pemilik Bangunan</h2>
+			<h2>Daftar Pemilik Arsip</h2>
 			<a href="<?= base_url("BaseController/form_tambah") ?>" class="btn btn-primary float-left">Tambah</a>
 		</div>
 		<div class="card-body" style="width: 1230px;">
-			<table id="example2" class="table table-bordered table-striped">
+			<table id="example1" class="table table-bordered table-striped">
 				<thead>
 					<tr>
 						<th>#</th>
@@ -26,7 +26,7 @@
 							<td><a href="<?= base_url("assets/upload/") . $a['arsip']; ?>"><?= $a['arsip']; ?></a></td>
 							<td>
 								<?php
-								if ($this->session->userdata('role') == 3) {
+								if ($this->session->userdata('role') == 2) {
 									echo "Not Action";
 								} else {
 								?>

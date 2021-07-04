@@ -1,10 +1,10 @@
 	<div class="card" style="width: fit-content;">
 		<div class="card-header bg-secondary">
-			<h2>Daftar Pemilik Bangunan</h2>
+			<h2>Daftar Pemohon</h2>
 			<!-- <a href="<?= base_url("BaseController/form_tambah") ?>" class="btn btn-primary float-left">Tambah</a> -->
 		</div>
 		<div class="card-body" style="width: 1230px;">
-			<table id="example2" class="table table-bordered table-striped">
+			<table id="example1" class="table table-bordered table-striped">
 				<thead>
 					<tr>
 						<th>#</th>
@@ -26,12 +26,28 @@
 							<td><a href="<?= base_url("assets/upload/") . $a['arsip']; ?>"><?= $a['arsip']; ?></a></td>
 							<td>
 								<?php
-								if ($a['status'] == 'diajukan') {
+								if ($this->session->userdata('role') == 2) {
+									if ($a['status'] == 'diajukan') {
 								?>
-									<a href="<?= base_url("BaseController/ubahStatus/") . $a['id_peminjaman'] ?>" class="btn btn-danger">Setujui</a>
-								<?php
+										<span class="text-danger">Belum Di Setujui</span>
+									<?php
+									} else {
+									?>
+										<span class="text-success">Telah Di Setujui</span>
+									<?php
+									}
 								} else {
-									echo '<a href="" class="btn btn-success">Telah DiSetujui</a>';
+									?>
+									<?php
+									if ($a['status'] == 'diajukan') {
+									?>
+										<a href="<?= base_url("BaseController/ubahStatus/") . $a['id_peminjaman'] ?>" class="btn btn-danger">Setujui</a>
+									<?php
+									} else {
+										echo '<a href="" class="btn btn-success">Telah DiSetujui</a>';
+									}
+									?>
+								<?php
 								}
 								?>
 							</td>

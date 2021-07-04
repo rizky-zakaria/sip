@@ -66,7 +66,7 @@
 									</div>
 									<form class="user" method="POST" action="<?= base_url("AuthController/cekLogin"); ?>" id="form">
 										<div class="form-group">
-											<input type="text" class="form-control form-control-user" placeholder="Masukan Nama Pengguna" name="user" id="user" required>
+											<input type="text" class="form-control form-control-user" placeholder="Masukan NIK" name="user" id="user" required>
 										</div>
 										<div class="form-group">
 											<input type="password" class="form-control form-control-user" id="pass" placeholder="Kata Sandi" name="password" required>
