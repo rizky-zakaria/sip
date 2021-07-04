@@ -96,8 +96,9 @@
 							<thead class="thead-light">
 								<tr>
 									<th scope="col">#</th>
-									<th scope="col">Nomor IMB</th>
+									<th scope="col">Nomor Arsip</th>
 									<th>Nama Pemilik</th>
+									<th>NIK</th>
 									<th>Status</th>
 									<th scope="col">Aksi</th>
 								</tr>
@@ -111,6 +112,7 @@
 										<th scope="row"><?= $no++; ?></th>
 										<td><?= $dt['nomor_arsip']; ?></td>
 										<td><?= $dt['nama_pemilik']; ?></td>
+										<td><?= $dt['username']; ?></td>
 										<td>
 											<?php
 											if ($dt['status'] == 'disetujui') {
@@ -158,8 +160,9 @@
 										<thead class="thead-light">
 											<tr>
 												<th scope="col">#</th>
-												<th scope="col">Nomor IMB</th>
+												<th scope="col">Nomor Arsip</th>
 												<th scope="col">Nama Pemilik</th>
+												<th scope="col">NIK</th>
 												<th scope="col">Arsip</th>
 											</tr>
 										</thead>
@@ -172,6 +175,7 @@
 													<th scope="row"><?= $no++; ?></th>
 													<td><?= $dt['nomor_arsip']; ?></td>
 													<td><?= $dt['nama_pemilik']; ?></td>
+													<td><?= $dt['username']; ?></td>
 													<td>
 														<a href="<?= base_url("CustomerController/pinjam/" . $dt['id']); ?>" class="btn btn-primary">Ajukan Permohonan</a>
 													</td>
@@ -202,7 +206,7 @@
 
 	</div>
 	<div id="footer" class="text-center">
-		Development by @Rizky Zakaria 2021
+		Development by @Informatika UNG 2021
 	</div>
 
 	<!-- modal -->

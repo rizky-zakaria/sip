@@ -118,7 +118,7 @@
 
 	</div>
 	<div id="footer" class="text-center">
-		Development by @Rizky Zakaria 2021
+		Development by @Informatika UNG 2021
 	</div>
 
 	<!-- modal -->
