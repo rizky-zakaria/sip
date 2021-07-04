@@ -10,6 +10,7 @@
 						<th>#</th>
 						<th>Nomor Arsip</th>
 						<th>Nama Pemohon</th>
+						<th>NIK Pemohon</th>
 						<th>Arsip</th>
 						<th>Status</th>
 					</tr>
@@ -23,6 +24,7 @@
 							<td><?= $no++; ?></td>
 							<td><?= $a['nomor_arsip']; ?></td>
 							<td><?= $a['nama']; ?></td>
+							<td><?= $a['username']; ?></td>
 							<td><a href="<?= base_url("assets/upload/") . $a['arsip']; ?>"><?= $a['arsip']; ?></a></td>
 							<td>
 								<?php

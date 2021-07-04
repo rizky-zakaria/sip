@@ -107,7 +107,7 @@ class BaseController extends CI_Controller
 		$data['title'] = 'Base Data';
 		$data['judul'] = 'Dashboard Page';
 		// $data['arsip'] = $this->db->query("SELECT tb_pinjam.id_peminjaman, tb_pinjam.status, tb_biodata.nama, tb_arsip.nomor_arsip, tb_arsip.arsip FROM tb_pinjam JOIN tb_user JOIN tb_biodata JOIN tb_arsip ON tb_pinjam.id_peminjam = tb_user.id AND tb_pinjam.id_arsip = tb_arsip.id AND tb_user.id = tb_biodata.id_user ")->result_array();
-		$data['arsip'] = $this->db->query("SELECT tb_pinjam.id_peminjaman, tb_pinjam.status, tb_biodata.nama, tb_arsip.nomor_arsip, tb_arsip.arsip FROM tb_pinjam JOIN tb_user JOIN tb_biodata JOIN tb_arsip ON tb_pinjam.id_peminjam = tb_user.id AND tb_pinjam.id_arsip = tb_arsip.id")->result_array();
+		$data['arsip'] = $this->db->query("SELECT tb_pinjam.id_peminjaman, tb_pinjam.status, tb_biodata.nama, tb_user.username, tb_arsip.nomor_arsip, tb_arsip.arsip FROM tb_pinjam JOIN tb_user JOIN tb_biodata JOIN tb_arsip ON tb_pinjam.id_peminjam = tb_user.id AND tb_pinjam.id_arsip = tb_arsip.id")->result_array();
 		// var_dump($data['arsip']);
 		// die;
 		$this->load->view('templates/header', $data);
