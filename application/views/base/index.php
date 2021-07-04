@@ -44,7 +44,7 @@
 				<tfoot>
 					<tr>
 						<th>#</th>
-						<th>Nomor IMB</th>
+						<th>Nomor Arsip</th>
 						<th>Nama Pemilik</th>
 						<th>Arsip</th>
 						<th>Action</th>
