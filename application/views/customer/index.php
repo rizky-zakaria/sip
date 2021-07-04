@@ -148,6 +148,56 @@
 				}
 				?>
 
+				<?php
+				if (isset($setuju)) {
+				?>
+					<div class="card o-hidden border-0 shadow-lg my-5">
+						<div class="card-body p-0">
+							<?php
+							if ($setuju != null) {
+							?>
+								<center class="mt-4 mb-4">
+									<table class="table">
+										<thead class="thead-light">
+											<tr>
+												<th scope="col">#</th>
+												<th scope="col">Nomor IMB</th>
+												<th scope="col">Arsip</th>
+											</tr>
+										</thead>
+										<?php
+										$no = 1;
+										foreach ($setuju as $dt) {
+										?>
+											<tbody>
+												<tr>
+													<th scope="row"><?= $no++; ?></th>
+													<td><?= $dt['nomor_arsip']; ?></td>
+													<td>
+														<a class="btn btn-success" href="<?= base_url("CustomerController/preview/") . $dt['arsip']; ?>">Download</a>
+													</td>
+												</tr>
+											</tbody>
+										<?php
+										}
+										?>
+									</table>
+								</center>
+							<?php
+							} else {
+							?>
+								<center class="mt-4 mb-4">
+									<h5 style="color: red;">Belum Ada Data Yang Di Setujui</h5>
+								</center>
+							<?php
+							}
+							?>
+						</div>
+					</div>
+				<?php
+				}
+				?>
+
 
 			</div>
 
