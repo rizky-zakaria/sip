@@ -63,8 +63,8 @@ class AuthController extends CI_Controller
 		// die;
 		$insert = array(
 			'nama' => $post['nama'],
-			'tempta_lahir' => $post['tanggal_lahir'],
-			'tanggal_lahir' => $post['tempat_lahir'],
+			'tempta_lahir' => $post['tempat_lahir'],
+			'tanggal_lahir' => $post['tanggal_lahir'],
 			'alamat'  => $post['alamat'],
 			'jenis_kelamin' => $post['jenis_kelamin'],
 			'pekerjan' => $post['pekerjaan'],

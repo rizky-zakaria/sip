@@ -107,7 +107,7 @@ class BaseController extends CI_Controller
 		$data['title'] = 'Base Data';
 		$data['judul'] = 'Dashboard Page';
 		// $data['arsip'] = $this->db->query("SELECT tb_pinjam.id_peminjaman, tb_pinjam.status, tb_biodata.nama, tb_arsip.nomor_arsip, tb_arsip.arsip FROM tb_pinjam JOIN tb_user JOIN tb_biodata JOIN tb_arsip ON tb_pinjam.id_peminjam = tb_user.id AND tb_pinjam.id_arsip = tb_arsip.id AND tb_user.id = tb_biodata.id_user ")->result_array();
-		$data['arsip'] = $this->db->query("SELECT tb_pinjam.id_peminjaman, tb_pinjam.status, tb_biodata.nama, tb_user.username, tb_arsip.nomor_arsip, tb_arsip.arsip FROM tb_pinjam JOIN tb_user JOIN tb_biodata JOIN tb_arsip ON tb_pinjam.id_peminjam = tb_user.id AND tb_pinjam.id_arsip = tb_arsip.id AND tb_biodata.id_user = tb_user.id")->result_array();
+		$data['arsip'] = $this->db->query("SELECT tb_pinjam.id_peminjaman, tb_pinjam.tanggal_mohon, tb_pinjam.status, tb_biodata.nama, tb_user.username, tb_arsip.nomor_arsip, tb_arsip.arsip FROM tb_pinjam JOIN tb_user JOIN tb_biodata JOIN tb_arsip ON tb_pinjam.id_peminjam = tb_user.id AND tb_pinjam.id_arsip = tb_arsip.id AND tb_biodata.id_user = tb_user.id")->result_array();
 		// var_dump($data['arsip']);
 		// die;
 		$this->load->view('templates/header', $data);
@@ -120,5 +120,48 @@ class BaseController extends CI_Controller
 		$getId = $id;
 		$this->db->query("UPDATE `tb_pinjam` SET `status` = 'disetujui' WHERE `tb_pinjam`.`id_peminjaman` = '$getId'; ");
 		redirect(base_url("BaseController/permohonan"));
+	}
+
+	public function edit($id)
+	{
+		$data['title'] = 'Base Data';
+		$data['judul'] = 'Dashboard Page';
+		$data['data'] = $this->db->query("SELECT * FROM tb_arsip WHERE id = '$id'")->row_array();
+		$this->load->view('templates/header', $data);
+		$this->load->view('base/editArsip', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function profile()
+	{
+		$data['title'] = 'Base Data';
+		$data['judul'] = 'Dashboard Page';
+		$this->load->view('templates/header', $data);
+		$this->load->view('base/profile');
+		$this->load->view('templates/footer');
+	}
+
+	public function viewPemohon($user)
+	{
+		$data['title'] = 'Base Data';
+		$data['judul'] = 'Dashboard Page';
+		$data['pemohon'] = $this->db->query("SELECT * FROM tb_user JOIN tb_biodata ON tb_user.id = tb_biodata.id_user WHERE username ='$user'")->row_array();
+		$this->load->view('templates/header', $data);
+		$this->load->view('base/profile');
+		$this->load->view('templates/footer');
+	}
+
+	public function viewArsip($arsip)
+	{
+		// var_dump($arsip);
+		// die;
+		$data['title'] = 'Base Data';
+		$data['judul'] = 'Dashboard Page';
+		$data['pemohon'] = $this->db->query("SELECT * FROM `tb_arsip` WHERE nomor_arsip = '$arsip'")->row_array();
+		// var_dump($data['pemohon']);
+		// die;
+		$this->load->view('templates/header', $data);
+		$this->load->view('base/infoArsip', $data);
+		$this->load->view('templates/footer');
 	}
 }

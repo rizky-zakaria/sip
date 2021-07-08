@@ -1,14 +1,14 @@
-	<div class="card" style="width: fit-content;">
-		<div class="card-header bg-secondary">
-			<h2>Daftar Pengguna</h2>
-			<!-- <a href="<?= base_url("BaseController/form_tambah") ?>" class="btn btn-primary float-left">Tambah</a> -->
+	<div class="card" style="width: 100%;">
+		<div class="card-header">
+			Daftar Pengguna
 		</div>
-		<div class="card-body" style="width: 1230px;">
-			<table id="example2" class="table table-bordered table-striped">
+		<div class="card-body">
+			<table id="example1" class="table table-bordered table-striped">
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Username</th>
+						<th>Nama</th>
+						<th>NIK</th>
 						<th>Password</th>
 						<th>Role</th>
 						<th>action</th>
@@ -21,6 +21,7 @@
 					?>
 						<tr>
 							<td><?= $no++; ?></td>
+							<td><?= $a['nama']; ?></td>
 							<td><?= $a['username']; ?></td>
 							<td><?= $a['password']; ?></td>
 							<td>
@@ -56,7 +57,8 @@
 				<tfoot>
 					<tr>
 						<th>#</th>
-						<th>Username</th>
+						<th>Nama</th>
+						<th>NIK</th>
 						<th>Password</th>
 						<th>Role</th>
 						<th>Action</th>

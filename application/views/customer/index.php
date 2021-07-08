@@ -99,12 +99,16 @@
 									<th scope="col">Nomor Arsip</th>
 									<th>Nama Pemilik</th>
 									<th>NIK</th>
+									<th>Jenis Arsip</th>
+									<th>Tanggal Arsip</th>
 									<th>Status</th>
 									<th scope="col">Aksi</th>
 								</tr>
 							</thead>
 							<?php
 							$no = 1;
+							// var_dump($setuju);
+							// die;
 							foreach ($setuju as $dt) {
 							?>
 								<tbody>
@@ -113,6 +117,8 @@
 										<td><?= $dt['nomor_arsip']; ?></td>
 										<td><?= $dt['nama_pemilik']; ?></td>
 										<td><?= $dt['username']; ?></td>
+										<td><?= $dt['jenis_arsip']; ?></td>
+										<td><?= $dt['tanggal_arsip']; ?></td>
 										<td>
 											<?php
 											if ($dt['status'] == 'disetujui') {
