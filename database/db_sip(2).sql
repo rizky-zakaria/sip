@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 30, 2021 at 11:54 AM
+-- Generation Time: Jul 09, 2021 at 02:13 AM
 -- Server version: 8.0.25-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -34,15 +34,9 @@ CREATE TABLE `tb_arsip` (
   `nomor_arsip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `nama_pemilik` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `jenis_arsip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `keterangan` varchar(255) NOT NULL
+  `keterangan` varchar(255) NOT NULL,
+  `tanggal_arsip` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `tb_arsip`
---
-
-INSERT INTO `tb_arsip` (`id`, `arsip`, `nomor_arsip`, `nama_pemilik`, `jenis_arsip`, `keterangan`) VALUES
-(8, 'ikic6a848d5-4059-4950-8b1b-87877dd9aaf9.pdf', 'c444a0bc-d583-409b-b445-bb27c2439811', 'iki', 'iki', 'iki');
 
 -- --------------------------------------------------------
 
@@ -63,13 +57,6 @@ CREATE TABLE `tb_biodata` (
   `id_user` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `tb_biodata`
---
-
-INSERT INTO `tb_biodata` (`id_biodata`, `nama`, `tempta_lahir`, `tanggal_lahir`, `alamat`, `jenis_kelamin`, `pekerjan`, `no_hp`, `email`, `id_user`) VALUES
-(1, 'iki', '2000-02-09', 'iki', 'k', 'k', 'k', '098', 'lk', 5);
-
 -- --------------------------------------------------------
 
 --
@@ -80,16 +67,9 @@ CREATE TABLE `tb_pinjam` (
   `id_peminjaman` int NOT NULL,
   `id_peminjam` int NOT NULL,
   `id_arsip` int NOT NULL,
-  `status` varchar(255) NOT NULL
+  `status` varchar(255) NOT NULL,
+  `tanggal_mohon` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `tb_pinjam`
---
-
-INSERT INTO `tb_pinjam` (`id_peminjaman`, `id_peminjam`, `id_arsip`, `status`) VALUES
-(1, 5, 8, 'disetujui'),
-(2, 5, 8, 'diajukan');
 
 -- --------------------------------------------------------
 
@@ -110,9 +90,7 @@ CREATE TABLE `tb_user` (
 
 INSERT INTO `tb_user` (`id`, `username`, `password`, `role`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1),
-(3, 'kepala', '870f669e4bbbfa8a6fde65549826d1c4', 2),
-(4, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 3),
-(5, 'iki', '71fd94a0d995244544c153158bbbefc5', 3);
+(2, 'kabid', '6d6827e38b382572cc5be098158174d3', 2);
 
 --
 -- Indexes for dumped tables
@@ -153,25 +131,25 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_arsip`
 --
 ALTER TABLE `tb_arsip`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tb_biodata`
 --
 ALTER TABLE `tb_biodata`
-  MODIFY `id_biodata` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_biodata` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_pinjam`
 --
 ALTER TABLE `tb_pinjam`
-  MODIFY `id_peminjaman` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_peminjaman` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables

@@ -22,7 +22,7 @@
 						<tr>
 							<td><?= $no++; ?></td>
 							<td><?= $a['nama']; ?></td>
-							<td><?= $a['username']; ?></td>
+							<td><a href="<?= base_url("BaseController/viewPemohon/" . $a['username']); ?>"><?= $a['username']; ?></a></td>
 							<td><?= $a['password']; ?></td>
 							<td>
 								<?php
@@ -43,7 +43,17 @@
 									echo "Not Action";
 								} else {
 								?>
-									<a href="<?= base_url("UserController/form_edit/" . $a['id']); ?>" class="btn btn-success">Edit</a>
+									<?php
+									if ($this->session->userdata('role') == 1) {
+									?>
+										<a href="<?= base_url("UserController/form_edit/" . $a['id']); ?>" class="btn btn-success">Edit</a>
+									<?php
+									} else {
+									?>
+										<span>No Action</span>
+									<?php
+									}
+									?>
 									<!-- <a href="<?= base_url("UserController/hapus/" . $a['id']); ?>" class="btn btn-danger">Hapus</a> -->
 								<?php
 								}

@@ -74,7 +74,7 @@ class CustomerController extends CI_Controller
 		// 	'email' => $email,
 		// 	'date_created' => time()
 		// ];
-		// $this->_sendEmail();
+		$this->_sendEmail();
 		redirect(base_url("CustomerController"));
 	}
 
@@ -83,8 +83,8 @@ class CustomerController extends CI_Controller
 		$config = [
 			'protocol'  => 'smtp',
 			'smtp_host' => 'ssl://smtp.googlemail.com',
-			'smtp_user' => 'emailtesting364@gmail.com',
-			'smtp_pass' => 'emailtesting20',
+			'smtp_user' => 'sipadai21@gmail.com',
+			'smtp_pass' => 'S1Pada1#21',
 			'smtp_port' => 465,
 			'mailtype'  => 'html',
 			'charset'   => 'utf-8',
@@ -93,8 +93,9 @@ class CustomerController extends CI_Controller
 
 		$this->email->initialize($config);
 
-		$this->email->from('emailtesting20@gmail.com', 'Ada Permohonan Baru yang mungkin perlu anda setujui');
-		$this->email->to('sipadai21@gmail.com');
+		$this->email->from('sipadai21@gmail.com', 'Ada Permohonan Baru yang mungkin perlu anda setujui');
+		$email = "rizky.zakaria78@gmail.com";
+		$this->email->to($email);
 
 		// if ($type == 'verify') {
 		// 	$this->email->subject('Account Verification');
