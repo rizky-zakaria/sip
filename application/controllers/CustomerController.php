@@ -94,7 +94,7 @@ class CustomerController extends CI_Controller
 		$this->email->initialize($config);
 
 		$this->email->from('sipadai21@gmail.com', 'Ada Permohonan Baru yang mungkin perlu anda setujui');
-		$email = "rizky.zakaria78@gmail.com";
+		$email = "rizkyahmad2109@gmail.com";
 		$this->email->to($email);
 
 		// if ($type == 'verify') {

@@ -70,7 +70,16 @@ class BaseController extends CI_Controller
 		$this->arsip = $this->_uploadImage();
 		$this->jenis_arsip = $post['jenis'];
 		$this->keterangan = $post['keterangan'];
+		$this->tanggal_arsip = $post['tanggal'];
 		$this->db->insert('tb_arsip', $this);
+		// $this->hapus($nomor);
+		if (isset($post['id'])) {
+			$id = $post['id'];
+			$getId = $this->db->query("SELECT * FROM tb_arsip WHERE id='$id'")->result_array();
+			if ($getId != null) {
+				$this->hapus($id);
+			}
+		}
 		redirect(base_url("BaseController"));
 	}
 
@@ -126,6 +135,7 @@ class BaseController extends CI_Controller
 	{
 		$data['title'] = 'Base Data';
 		$data['judul'] = 'Dashboard Page';
+		$data['id'] = $id;
 		$data['data'] = $this->db->query("SELECT * FROM tb_arsip WHERE id = '$id'")->row_array();
 		$this->load->view('templates/header', $data);
 		$this->load->view('base/editArsip', $data);

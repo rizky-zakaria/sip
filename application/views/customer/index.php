@@ -81,7 +81,7 @@
 									</div>
 									<form class="user" method="POST" action="<?= base_url("CustomerController"); ?>" id="form">
 										<div class="form-group">
-											<input type="text" class="form-control form-control-user" placeholder="Masukan Nomor Arsip" name="cek" id="user" required>
+											<input type="text" class="form-control form-control-user" placeholder="Cari Arsip" name="cek" id="user" required>
 										</div>
 										<input type="submit" value="Cek" class="btn btn-outline-primary btn-user btn-block">
 									</form>
@@ -168,7 +168,9 @@
 												<th scope="col">#</th>
 												<th scope="col">Nomor Arsip</th>
 												<th scope="col">Nama Pemilik</th>
-												<!-- <th scope="col">NIK</th> -->
+												<!-- <th>NIK</th> -->
+												<th>Jenis Arsip</th>
+												<th>Tanggal Arsip</th>
 												<th scope="col">Arsip</th>
 											</tr>
 										</thead>
@@ -182,6 +184,8 @@
 													<td><?= $dt['nomor_arsip']; ?></td>
 													<td><?= $dt['nama_pemilik']; ?></td>
 													<!-- <td><?= $dt['username']; ?></td> -->
+													<td><?= $dt['jenis_arsip']; ?></td>
+													<td><?= $dt['tanggal_arsip']; ?></td>
 													<td>
 														<a href="<?= base_url("CustomerController/pinjam/" . $dt['id']); ?>" class="btn btn-primary">Ajukan Permohonan</a>
 													</td>

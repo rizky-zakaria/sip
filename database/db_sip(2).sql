@@ -36,7 +36,7 @@ CREATE TABLE `tb_arsip` (
   `jenis_arsip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `keterangan` varchar(255) NOT NULL,
   `tanggal_arsip` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -55,7 +55,7 @@ CREATE TABLE `tb_biodata` (
   `no_hp` varchar(25) NOT NULL,
   `email` varchar(255) NOT NULL,
   `id_user` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -69,7 +69,7 @@ CREATE TABLE `tb_pinjam` (
   `id_arsip` int NOT NULL,
   `status` varchar(255) NOT NULL,
   `tanggal_mohon` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -82,7 +82,7 @@ CREATE TABLE `tb_user` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `tb_user`
@@ -105,7 +105,6 @@ ALTER TABLE `tb_arsip`
 --
 -- Indexes for table `tb_biodata`
 --
-ALTER TABLE `tb_biodata`
   ADD PRIMARY KEY (`id_biodata`),
   ADD KEY `tb_user` (`id_user`);
 

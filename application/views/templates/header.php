@@ -94,7 +94,7 @@
 							</a>
 						</li>
 						<?php
-						if ($this->session->userdata('role') == 1) {
+						if ($this->session->userdata('role') != 3) {
 						?>
 							<!-- <li class="nav-item">
 								<a href="<?= base_url("AccountController"); ?>" class="nav-link">

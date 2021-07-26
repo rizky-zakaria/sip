@@ -1,6 +1,12 @@
-	<div class="card">
+	<div class="card" style="width: 100%;">
 		<div class="card-header">
-			<a href="<?= base_url("BaseController/form_tambah") ?>" class="btn btn-primary float-left">Tambah</a>
+			<?php
+			if ($this->session->userdata('role') == 1) {
+			?>
+				<a href="<?= base_url("BaseController/form_tambah") ?>" class="btn btn-primary float-left">Tambah</a>
+			<?php
+			}
+			?>
 		</div>
 		<div class="card-body">
 			<table id="example1" class="table table-bordered table-striped">
